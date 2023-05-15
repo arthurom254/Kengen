@@ -1,0 +1,231 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Tahoma;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .personal {
+            width: 90vw;
+            margin: 10px auto;
+            padding: 1%;
+            background-color: rgba(238, 234, 240, 0.7);
+        }
+
+        .field {
+            width: 47%;
+            display: inline-block;
+            margin: 1px auto;
+            padding: 1%;
+            background-color: rgba(255, 127, 80, 0.212);
+            border: 2px solid purple;
+            font-size: 1.2em;
+        }
+
+        input,
+        textarea {
+            width: 95%;
+            padding: 2%;
+            background-color: white;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        @media only screen and (max-width:670px) {
+            .field {
+                width: 95%;
+            }
+        }
+
+        input[type="submit"] {
+            width: 100;
+            background-color: rgba(10, 188, 233, 0.336);
+        }
+
+        input[type="button"] {
+            font-size: 1.2em;
+        }
+
+        .profile {
+            display: none;
+        }
+
+        .hide {
+            background-color: rgba(10, 188, 233, 0.336);
+            display: none;
+        }
+
+        .log{
+            width:300px;
+            display: inline-block;
+            border:2px solid blue;
+        }
+
+        .logval{
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            border: 1px solid red;
+        }
+        .personal h3{
+            padding: 10px;
+        }
+        .personal p{
+            padding-left: 15px;
+        }
+        .navbar{
+            width:91%;
+            margin: 0 auto;
+            padding: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.521);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .who{
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">"&#127568;</div>
+        
+        <div class="nav-item">
+            <span> <a href="logout">Logout</a></span>
+        </div>
+    </nav>
+    <div class="who">
+            <span>{{user.first_name}} - </span>
+            <span>{{user.last_name}} - </span>
+            <span>{{student.institution}} - </span>
+            <span>{{student.department}}</span>
+        </div>
+    <main class="main">
+        <input type="button" id="show" value="&#127968; Edit profile" onclick="show('show', 'hide', 'profile')">
+        <input type="button" id="hide" class="hide" value="&#10060; Close" onclick="hide('show', 'hide', 'profile')">
+        <section id="profile" class="profile">
+            <fieldset class="personal">
+                <legend>&#127968; Personal Details</legend>
+                <div class="field">
+                    <label for="firstname">First name: <input type="text" name="fname" id="lastname"
+                            value="{{user.first_name}}" disabled></label>
+                </div>
+                <div class="field">
+                    <label for="firstname">Last name: <input type="text" name="fname" id="lastname"
+                            value="{{user.last_name}}"></label>
+                </div>
+                <div class="field">
+                    <label for="firstname">ID number: <input type="text" value="{{user.username}}" disabled></label>
+                </div>
+                <div class="field">
+                    <label for="email">Email: <input type="email" name="email" id="email"
+                            value="{{user.email}}"></label>
+                </div>
+                <div class="field">
+                    <label for="phone">Phone: <input type="phone" name="phone" id="phone"
+                            value="{{student.phone}}"></label>
+                </div>
+                <div class="field">
+                    <label for="institution">Institution: <input type="text" name="institution" id="institution"
+                            value="{{student.institution}}" disabled></label>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Update">
+                </div>
+            </fieldset>
+        </section>
+
+        <input type="button" id="show1" value="&#128195; Add Weekly Progress"
+            onclick="show('show1', 'hide1', 'profile1')">
+        <input type="button" id="hide1" class="hide" value="&#10060; Close" onclick="hide('show1', 'hide1', 'profile1')">
+
+        <section class="profile" id="profile1">
+            <form method="POST" action="logs">
+                {%csrf_token%}
+                <fieldset class="personal">
+                    <legend>&#128195; Add Weekly Progress </legend>
+                    <div class="field">
+                        <label for="wstart">Week Start: <input type="date" name="wstart" id="wstart"></label>
+                    </div>
+                    <div class="field">
+                        <label for="wend">Week End: <input type="date" name="wend" id="wend"></label>
+                    </div>
+                    <div class="field">
+                        <label for="activity">Activity done: <textarea name="activity" id="activity"></textarea></label>
+                    </div>
+                    <div class="field">
+                        <label for="skills">New Skills Aquired: <textarea name="skills" id="skills"></textarea></label>
+                    </div>
+                    <div class="field">
+                        <label for="challanges">Challanges Met: <textarea name="challanges"
+                                id="challanges"></textarea></label>
+                    </div>
+                    <div class="field">
+                        <label for="comment">Other Comments: <textarea name="comment" id="comment"></textarea></label>
+                    </div>
+                    <div class="field">
+                        <input type="submit" value="Save">
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <input type="button" id="show3" value="&#127960; My Weekly Progress" onclick="show('show3', 'hide3', 'profile3')">
+        <input type="button" id="hide3" class="hide" value="&#10060; Close" onclick="hide('show3', 'hide3', 'profile3')">
+        <section class="profile" id="profile3">
+            {%for log in logs reversed%}
+            <fieldset class="personal">
+                <legend>{{log.startdate}} - {{log.enddate}}</legend>
+                <h3>Activity Done</h3>
+                <p>{{log.activityDone | linebreaks}}</p>
+                <h3>New Skills Aquired</h3>
+                <p>{{log.newSkillsAquired | linebreaks}}</p>
+                <h3>Challanges Met</h3>
+                <p>{{log.challangesMet | linebreaks}}</p>
+            </fieldset>
+            
+            {%endfor%}
+        </section>
+    </main>
+    <script>
+        function show(btn1, btn2, box) {
+            document.getElementById(`${box}`).style.display = 'block';
+            document.getElementById(`${btn1}`).style.display = 'none';
+            document.getElementById(`${btn2}`).style.display = 'block';
+        }
+
+        function hide(btn1, btn2, box) {
+            document.getElementById(`${box}`).style.display = 'none';
+            document.getElementById(`${btn1}`).style.display = 'block';
+            document.getElementById(`${btn2}`).style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

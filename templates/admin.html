@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h2>{{supervisor}}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Institution</th>
+                    <th>Approved?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for students in student %}
+                <tr>
+                    <td> {%for s in stu %}
+                        {%if s.username == students.username%}
+                        {{s.first_name}} {{s.last_name}}
+                        {%endif%}
+                        {%endfor%}</td>
+                    <td> {{students.institution}}</td>
+                    <td> Yes </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+
+    </main>
+</body>
+
+</html>

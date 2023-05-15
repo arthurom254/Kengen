@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign in</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+       
+        .form {
+            width: 90vw;
+            margin: 0 auto;
+            max-width: 400px;
+            padding: 20px 10px 5px 10px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.356);
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 2em;
+            font-size: 1em;
+            margin: 5px 0px;
+            background-color: white;
+        }
+
+        input[type='text']:focus,
+        select:focus,
+        input[type='date']:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+
+        .head-2 {
+            text-align: center;
+            padding: 5px;
+            color: rgb(255, 255, 255);
+        }
+
+        .mid {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input[type='submit'] {
+            border-radius: 5px;
+            color:#ffffff;
+            background-image:linear-gradient(90deg,rgba(0, 0, 0, 0.685),rgba(0, 0, 0, 0.39)) ;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="mid">
+        <section class="form">
+            <form method="POST">
+                {%csrf_token%}
+                <fieldset>
+                    <legend>Log In</legend>
+                    <label for="username">UserName: <input type="text" id="username" name="username" required oninvalid="setCustomValidity('Enter your username')"></label>
+                    <label for="password">Password: <input type="password" id="pwd" name="pwd"></label>
+                </fieldset>
+                <input type="submit" value="Login">
+            </form>
+            <p>Dont have an account yet? sign up <a href="signup">here</a></p>
+        </section>
+
+    </main>
+</body>
+
+</html>
