@@ -6,5 +6,5 @@ urlpatterns=[
     path('signup',views.signup, name='signup'),
     path('my',views.index, name='index'),
     path('logs',views.logs, name='logs'),
-    psth('view/<str:id>', views.studentlog, name='studenylogs'),
+    path('view/<str:id>', views.studentlog, name='studenylogs'),
     ]
