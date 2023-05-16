@@ -6,8 +6,8 @@
   <body>
    <main>
     <h1>{{user.first_name}} {{user.last_name}}</h1>
-       <fieldset> 
-         {%for log in logs reversed%}
+         {%for log in logs reversed%} 
+       <fieldset>
        <legend>{{log.startdate}} - {{log.enddate}}</legend>
          <h2>Activity Done</h2>
          <p>{{log.activityDone | linebreaks}}</p>
