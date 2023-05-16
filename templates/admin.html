@@ -6,6 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table{
+         border:1px solid black;
+           border-collapse:collapse; 
+        }
+        table a{
+            color:black;
+            text-decoration:none;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +34,7 @@
                 <tr>
                     <td> {%for s in stu %}
                         {%if s.username == students.username%}
-                        {{s.first_name}} {{s.last_name}}
+                        <a href="view/{{s.id}}">{{s.first_name}} {{s.last_name}}</a>
                         {%endif%}
                         {%endfor%}</td>
                     <td> {{students.institution}}</td>
