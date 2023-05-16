@@ -105,7 +105,7 @@ def studentlog(request, id):
      "user":user,  
      "logs":logs,
     }
-    return render(requst, 'view.html', context)
+    return render(request, 'view.html', context)
     
     
     
