@@ -4,11 +4,14 @@
     <title>{{user.first_name}}</title>
   </head>
   <body>
+   <main>
    
     <h1>{{user.first_name}} {{user.last_name}}</h1>
-     {%for log in logs reversed%}
-    <h2>Activity Done</h2>
-    <p>{{log.activityDone | linebreaks}}</p>
+       <fieldset>
+       <legend>{{log.startdate}} - {{log.enddate}}</legend>
+         {%for log in logs reversed%}
+         <h2>Activity Done</h2>
+         <p>{{log.activityDone | linebreaks}}</p>
     
     <h2>New skills gained</h2>
     <p>{{log.newSkillsAquired | linebreaks}}</p>
@@ -17,5 +20,7 @@
     <p>{{log.challangesMet | linebreaks }}</p>
     {{log}}
     {%endfor%}
+     </fieldset>
+    </main>
   </body>
 </html>
