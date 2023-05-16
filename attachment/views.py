@@ -100,8 +100,10 @@ def logs(request):
         
 def studentlog(request, id):
     user=User.objects.get(id=id)
+    logs=Logs.objects.filter(student=request.user.id)
     context={
-     "user":user,   
+     "user":user,  
+     "logs":logs,
     }
     return render(requst, 'view.html', context)
     
