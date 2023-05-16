@@ -100,7 +100,7 @@ def logs(request):
         
 def studentlog(request, id):
     user=User.objects.get(id=id)
-    logs=Logs.objects.filter(student=request.user.id)
+    logs=Logs.objects.filter(student=id)
     context={
      "user":user,  
      "logs":logs,
