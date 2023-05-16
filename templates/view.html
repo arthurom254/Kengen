@@ -5,6 +5,14 @@
   </head>
   <body>
     <h1>{{user.first_name}} {{user.last_name}}</h1>
-    <p>{{user}}</p>
+    
+    <h2>Activity Done</h2>
+    <p>{{logs.activityDone | linebreaks}}</p>
+    
+    <h2>New skills gained</h2>
+    <p>{{logs.newSkillsAquired | linebreaks}}</p>
+    
+    <h2>Challanges Met</h2>
+    <p>{{logs.challangesMet | linebreaks }}</p>
   </body>
 </html>
