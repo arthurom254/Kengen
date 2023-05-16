@@ -5,11 +5,10 @@
   </head>
   <body>
    <main>
-   
     <h1>{{user.first_name}} {{user.last_name}}</h1>
-       <fieldset>
-       <legend>{{log.startdate}} - {{log.enddate}}</legend>
+       <fieldset> 
          {%for log in logs reversed%}
+       <legend>{{log.startdate}} - {{log.enddate}}</legend>
          <h2>Activity Done</h2>
          <p>{{log.activityDone | linebreaks}}</p>
     
@@ -18,9 +17,8 @@
     
     <h2>Challanges Met</h2>
     <p>{{log.challangesMet | linebreaks }}</p>
-    {{log}}
-    {%endfor%}
-     </fieldset>
+     </fieldset>  
+     {%endfor%}
     </main>
   </body>
 </html>
