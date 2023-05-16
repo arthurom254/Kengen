@@ -98,3 +98,9 @@ def logs(request):
         log.save()
         return redirect('/my')
         
+def studentlog(request, id):
+    user=User.objects.get(id=id)
+    return HttpResponse(user.first_name)
+    
+    
+    
