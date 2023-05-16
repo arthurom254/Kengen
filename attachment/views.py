@@ -100,7 +100,10 @@ def logs(request):
         
 def studentlog(request, id):
     user=User.objects.get(id=id)
-    return HttpResponse(user.first_name)
+    context={
+     "user":user,   
+    }
+    return render(requst, 'view.html', context)
     
     
     
