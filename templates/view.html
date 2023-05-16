@@ -2,9 +2,18 @@
 <html>
   <head>
     <title>{{user.first_name}}</title>
+    <style>
+          .personal {
+            width: 90vw;
+            margin: 10px auto;
+            padding: 1%;
+            background-color: rgba(238, 234, 240, 0.7);
+        }
+    </style>
   </head>
   <body>
-   <main>
+   <main class="main">
+     <section class="personal">
     <h1>{{user.first_name}} {{user.last_name}}</h1>
          {%for log in logs reversed%} 
        <fieldset>
@@ -19,6 +28,7 @@
     <p>{{log.challangesMet | linebreaks }}</p>
      </fieldset>  
      {%endfor%}
+       </section>
     </main>
   </body>
 </html>
